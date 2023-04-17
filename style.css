@@ -1,0 +1,36 @@
+h1{
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: right;
+    width: 20rem;
+    line-height: 1.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  button{
+        color: #1cc49d;
+        background-color: #190c8d;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2rem;
+        width:  7rem;
+        margin-top: 1rem;
+    margin-bottom: 1rem;   
+  }
+
+  .dropdown-content{
+    display: none;
+  }
+  .show {display:block;}
