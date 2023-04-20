@@ -6,7 +6,8 @@ let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
 let status = document.querySelector("#status");
-let visibilityOfForm = document.querySelector("#myDropdown")
+let visibilityOfForm = document.querySelector("#myDropdown");
+let indexOfBook = 0;
 
 newBookButton.addEventListener("click", () => {
   showForm();
@@ -18,9 +19,10 @@ function showForm() {
 }
 
 function clearForm() {
-  title.innerHTML = "";
-  author.innerHTML = "";
-  pages.innerHTML = "";
+  title.value = "";
+  author.value = "";
+  pages.value = "";
+  status.checked = false;
 }
 
 addBook.addEventListener('click', (event) => {
@@ -38,11 +40,39 @@ addBook.addEventListener('click', (event) => {
         status: status.checked
     }]);
     showForm();
-    addBookToLibary();
+    //addBookToLibary();
+    showBook(indexOfBook);
+    indexOfBook++;
   }
 })
 
+function showBook(indexOfBook) {
+  myLibary[indexOfBook].forEach((detials) => {
+    let newBook = document.createElement("div");
+    let deleteBook = document.createElement("div");
+    deleteBook.className = "close";
+    newBook.classList = "box";
+    newBook.innerText = "Title : " +
+    detials.title +
+    "\n" +
+    "Author : " +
+    detials.author +
+    "\n" +
+    "Pages : " +
+    detials.pages +
+    readStatus(detials.status);
+    bookContainer.append(newBook);
+    newBook.appendChild(deleteBook);
+});
+}
 
+function readStatus(status) {
+  if(status){
+    return "\nStatus : Completed";
+  } else {
+    return "\nStatus : Incomplete";
+  }
+}
 
 /*(function Book(title, author, pages, status) {
   this.title = title;
@@ -86,14 +116,12 @@ bookOne.updateMyLibary();
 
 bookTwo.updateMyLibary();
 
-bookThree.updateMyLibary();)*/
+bookThree.updateMyLibary();)
 
 function addBookToLibary() {
   myLibary.forEach((book) => {
     book.forEach((detials) => {
         let newBook = document.createElement("div");
-        let deleteBook = document.createElement("div");
-        deleteBook.className = "close";
         newBook.classList = "box";
         newBook.innerText = "Title : " +
         detials.title +
@@ -108,12 +136,4 @@ function addBookToLibary() {
         newBook.appendChild(deleteBook);
     });
   });
-}
-
-function readStatus(status) {
-  if(status){
-    return "\nStatus : Completed";
-  } else {
-    return "\nStatus : Incomplete";
-  }
-}
+}*/
