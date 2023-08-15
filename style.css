@@ -18,8 +18,8 @@ ul{
 }
 
 .box{
-  width:20rem;
-  height:17.5rem;
+  min-width:20rem;
+  min-height:8rem;
   background:#e6e6e6;
   border-radius:8px;
   box-shadow:0 0 40px -10px #000;
@@ -29,6 +29,7 @@ ul{
   font-family:'Montserrat',sans-serif;
   margin: 1.5rem;
   position: relative;
+  line-height: 2rem;
 }
 
 button{

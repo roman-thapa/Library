@@ -1,0 +1,11 @@
+{
+  "name": "Library",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:roman-thapa/Library.git",
+  "author": "roman <51534566+roman-thapa@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^8.47.0"
+  }
+}

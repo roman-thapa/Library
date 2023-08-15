@@ -1,4 +1,17 @@
 let myLibary = [];
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const storedData = localStorage.getItem('bookData');
+  if (storedData) {
+    myLibary = JSON.parse(storedData);
+    for (const key in myLibary) {
+      showBook(key);
+    }
+  }
+});
+
+
 let bookContainer = document.querySelector(".bookContainer");
 let newBookButton = document.querySelector(".newBookButton");
 let addBook = document.querySelector(".addBook");
@@ -7,7 +20,6 @@ let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
 let status = document.querySelector("#status");
 let visibilityOfForm = document.querySelector("#myDropdown");
-let indexOfBook = 0;
 
 newBookButton.addEventListener("click", () => {
   showForm();
@@ -39,9 +51,9 @@ addBook.addEventListener('click', (event) => {
         pages: pages.value,
         status: status.checked
     }]);
+    localStorage.setItem('bookData', JSON.stringify(myLibary));
     showForm();
-    showBook(indexOfBook);
-    indexOfBook++;
+    showBook(myLibary.length-1);
   }
 })
 
@@ -77,7 +89,8 @@ function readStatus(status) {
 }
 
 function deleteBook(id) {
-  delete myLibary[id];
+  myLibary.splice([id], 1);
   let bookToDelete = document.getElementById(id);
   bookToDelete.remove();
+  localStorage.setItem('bookData', JSON.stringify(myLibary));
 }
